@@ -1,5 +1,7 @@
 const About = () => {
-  return <div>This is About page</div>;
+  return (
+  <div className="pt-20">This is About page</div>
+  )
 };
 
 export default About;

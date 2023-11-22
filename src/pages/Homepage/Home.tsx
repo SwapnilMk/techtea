@@ -1,7 +1,12 @@
-const Home = () => {
-    return (
-        <div>This is Home page</div>
-        )
-};
+import Hero from '@/components/Hero/Hero'
+import React from 'react'
 
-export default Home;
+const Home = () => {
+  return (
+    <div className='w-full'>
+      <Hero />
+    </div>
+  )
+}
+
+export default Home
