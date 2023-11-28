@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { CiImageOn } from "react-icons/ci";
-// import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import { APIURL } from "../../utlis/api";
+import { APIURL } from "../../utlis/api";
 
-const Post = () => {
+const PostPage = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const navigate = useNavigate();
@@ -144,9 +144,9 @@ const Post = () => {
           )}
         </form>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
 
-export default Post;
+export default PostPage;

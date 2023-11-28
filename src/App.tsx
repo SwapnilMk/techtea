@@ -1,26 +1,50 @@
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "@/components/Navbar/Navbar";
-import Home from "./pages/HomePage/Home";
-import About from "./pages/AboutPage/About";
-import  Contact  from "./pages/ContactPage/Contact";
+import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/AuthPage/LoginPage";
 import RegisterPage from "./pages/AuthPage/RegisterPage";
-import PostPage from "./pages/PostPage/Post"
+import DetailsPage from "./pages/DetailsPage/DetailsPage";
+import PostPage from "./pages/PostPage/PostPage";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
-function App() {
+
+
+const App = () => {
+  const [auth, setAuth] = useState(localStorage.getItem("auth"));
+
+  useEffect(() => {
+    const handleAuthChange = () => {
+      setAuth(localStorage.getItem("auth"));
+    };
+
+    window.addEventListener("storage", handleAuthChange);
+
+    return () => {
+      window.removeEventListener("storage", handleAuthChange);
+    };
+  }, []);
+
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/loginPage" element={<LoginPage />} />
-        <Route path="/registerPage" element={<RegisterPage />} />
-        <Route path="/PostPage" element={<PostPage/>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/post" element={<PostPage />} />
+        <Route path="/blog-details/:id" element={<DetailsPage />} />
+        <Route
+          path="/user-details"
+          element={ <UserProfile />}
+        />
+        <Route
+          path="/login"
+          element={auth ? <HomePage /> : <LoginPage />}
+        ></Route>
+        <Route
+          path="/register"
+          element={auth ? <HomePage /> : <RegisterPage />}
+        />
       </Routes>
     </>
   );
-}
+};
 
 export default App;
