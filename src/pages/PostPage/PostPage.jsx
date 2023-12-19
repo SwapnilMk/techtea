@@ -30,21 +30,55 @@ const PostPage = () => {
     };
   };
 
+  // const formSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const newPost = {
+  //     title,
+  //     username: auth.data.others.username,
+  //     desc,
+  //   };
+
+  //   if (photo) {
+  //     newPost.photo = photo;
+  //   }
+
+  //   setIsLoading(true); // Set loading state to true
+
+  //   try {
+  //     const res = await axios.post(`${APIURL}/api/posts`, newPost);
+  //     console.log(res);
+  //     navigate("/");
+  //     toast.success("Post Uploaded", {
+  //       position: toast.POSITION.BOTTOM_RIGHT,
+  //       autoClose: 3000,
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //     toast.error("Something went wrong", {
+  //       position: toast.POSITION.BOTTOM_RIGHT,
+  //       autoClose: 3000,
+  //     });
+  //   }
+
+  //   setIsLoading(false); // Set loading state back to false after form submission
+  // };
+
   const formSubmit = async (e) => {
     e.preventDefault();
-
+  
     const newPost = {
       title,
-      username: auth.data.others.username,
+      username: auth?.data?.others?.username, // Use optional chaining to handle potential undefined or null values
       desc,
     };
-
+  
     if (photo) {
       newPost.photo = photo;
     }
-
-    setIsLoading(true); // Set loading state to true
-
+  
+    setIsLoading(true);
+  
     try {
       const res = await axios.post(`${APIURL}/api/posts`, newPost);
       console.log(res);
@@ -60,9 +94,10 @@ const PostPage = () => {
         autoClose: 3000,
       });
     }
-
-    setIsLoading(false); // Set loading state back to false after form submission
+  
+    setIsLoading(false);
   };
+  
 
   return (
     <>
