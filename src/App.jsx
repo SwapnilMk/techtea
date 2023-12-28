@@ -8,7 +8,6 @@ import PostPage from "./pages/PostPage/PostPage";
 import UserProfile from "./pages/UserProfile/UserProfile";
 
 
-
 const App = () => {
   const [auth, setAuth] = useState(localStorage.getItem("auth"));
 

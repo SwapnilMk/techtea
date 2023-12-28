@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BlogLogo } from "../../assets";
+import { techteaLogo } from "../../assets";
 import { BiSearch } from "react-icons/bi";
 import { MdArrowDropDown } from "react-icons/md";
 import { SiBloglovin } from "react-icons/si";
@@ -27,19 +27,16 @@ const Navbar = ({ handleSearch }) => {
 
   return (
     <>
-      <div className=" fixed top-0 backdrop-blur-xl w-full  m-auto shadow-sm z-10">
-        <div className="container m-auto h-[75px] md:h-[65px] flex items-center py-1">
+      <div className=" fixed top-0 bg-white w-full m-auto shadow-sm z-10">
+        <div className="container m-auto h-[85px] md:h-[65px] flex items-center py-1">
           <div className="left flex-1 w-full flex items-center justify-start">
             <div className=" w-full h-[60px] overflow-hidden flex items-center justify-start">
               <Link to="/" className=" flex gap-2 items-center">
-                {/* <img
-                  className=" w-[70px] h-[70px] object-contain"
-                  src={BlogLogo}
+                <img
+                  className=" w-[110px] h-[110px] object-contain"
+                  src={techteaLogo}
                   alt="logo"
-                /> */}
-
-                <SiBloglovin className="text-2xl md:text-xl text-gray-800" />
-                <p className="logo font-bold text-3xl md:hidden text-gray-800">log.</p>
+                />
               </Link>
             </div>
           </div>

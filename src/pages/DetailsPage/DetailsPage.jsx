@@ -28,7 +28,7 @@ const DetailsPage = () => {
   // console.log(path);
 
   const auth = JSON.parse(localStorage.getItem("auth"));
-  console.log(auth);
+
 
   useEffect(() => {
     const getPostDetails = async () => {
