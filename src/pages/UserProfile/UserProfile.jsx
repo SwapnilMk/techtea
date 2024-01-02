@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { RiImageEditLine } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
 import { GrCheckmark } from "react-icons/gr";
 import Footer from "../../components/Footer/Footer";
 import { useSelector } from "react-redux";
+import { APIURL } from "../../utlis/api";
 import axios from "axios";
 
 const UserProfile = () => {
@@ -13,10 +14,9 @@ const UserProfile = () => {
   const [pic, setPic] = useState(null);
 
   const profileDetails = useSelector((state) => state.profile);
-  console.log(profileDetails);
 
   useEffect(() => {
-    setUsername(profileDetails?.others?.username);
+    setUsername(profileDetails.username);
   }, [profileDetails]);
 
   const handleUpdate = async () => {
@@ -26,7 +26,7 @@ const UserProfile = () => {
       formData.append("profilePic", pic);
 
       const response = await axios.put(
-        `http://localhost:8080/api/auth/update/${profileDetails?.others?._id}`,
+        `${APIURL}/api/auth/update/${profileDetails._id}`,
         formData
       );
 
@@ -104,7 +104,7 @@ const UserProfile = () => {
                       />
                     ) : (
                       <p className="text-base font-medium">
-                        {profileDetails?.others?.username}
+                        {profileDetails.username}
                       </p>
                     )}
                   </div>
@@ -113,7 +113,8 @@ const UserProfile = () => {
                       Email{" "}
                     </span>
                     <p className="text-base font-medium cursor-not-allowed">
-                      {profileDetails.others.email}
+                      {profileDetails.email}
+                     {/* { console.log(profileDetails.others.email)} */}
                     </p>
                   </div>
                 </div>

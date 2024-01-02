@@ -42,7 +42,7 @@ const Hero = () => {
             )}
 
             <h2 className="text-6xl md:text-4xl font-semibold text-black">
-              Welcome To Blog
+              Welcome To Techtea
             </h2>
           </div>
 

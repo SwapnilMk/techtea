@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { techteaLogo } from "../../assets";
 import { BiSearch } from "react-icons/bi";
 import { MdArrowDropDown } from "react-icons/md";
-import { SiBloglovin } from "react-icons/si";
 import { toast } from "react-toastify";
 
 const Navbar = ({ handleSearch }) => {
   const navigation = useNavigate();
   const [loginUser, setLoginUser] = useState(null);
+
+  const authData = JSON.parse(localStorage.getItem("auth"));
+  const userName = authData.data.username;
+
+
+
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"));
     if (auth && auth.data) {
@@ -78,7 +83,7 @@ const Navbar = ({ handleSearch }) => {
                           {loginUser.others.username}
                         </p>
                       ) : (
-                        <p className="font-medium text-gray-800">Unknown</p>
+                        <p className="font-medium text-gray-800">{userName}</p>
                       )}
                       <MdArrowDropDown className=" md:hidden text-gray-800" size={25} />
                     </button>
@@ -91,7 +96,7 @@ const Navbar = ({ handleSearch }) => {
                           <Link
                             className=" p-2 font-semibold text-gray-800"
                             title="profile"
-                            to="/user-details"
+                            to="/DetailsPage"
                           >
                             Profile
                           </Link>
