@@ -9,9 +9,6 @@ const Navbar = ({ handleSearch }) => {
   const navigation = useNavigate();
   const [loginUser, setLoginUser] = useState(null);
 
-  const authData = JSON.parse(localStorage.getItem("auth"));
-  const userName = authData.data.username;
-
 
 
   useEffect(() => {
@@ -64,26 +61,26 @@ const Navbar = ({ handleSearch }) => {
                     <button className="flex items-center gap-2 md:gap-0">
                       <img
                       loading="lazy"
-                        title={loginUser?.others?.username}
+                        title={loginUser.username}
                         alt="photos"
                         className="w-8 h-8 object-cover rounded-full border border-gray-500 "
                         src={
                           loginUser &&
-                          loginUser.others &&
-                          loginUser.others.profilePic
-                            ? loginUser.others.profilePic
+                          loginUser &&
+                          loginUser.profilePic
+                            ? loginUser.profilePic
                             : "https://img.icons8.com/color/48/null/circled-user-male-skin-type-7--v1.png"
                         }
                       />
 
                       {loginUser &&
-                      loginUser.others &&
-                      loginUser.others.username ? (
+                      loginUser &&
+                      loginUser.username ? (
                         <p className="font-medium md:hidden text-gray-800">
-                          {loginUser.others.username}
+                          {loginUser.username}
                         </p>
                       ) : (
-                        <p className="font-medium text-gray-800">{userName}</p>
+                        <p className="font-medium text-gray-800">Guest</p>
                       )}
                       <MdArrowDropDown className=" md:hidden text-gray-800" size={25} />
                     </button>

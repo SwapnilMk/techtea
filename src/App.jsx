@@ -6,6 +6,7 @@ import RegisterPage from "./pages/AuthPage/RegisterPage";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import PostPage from "./pages/PostPage/PostPage";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import AboutPage from "./pages/AboutPage/AboutPage";
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/post" element={<PostPage />} />
+        <Route path="/about" element={<AboutPage/>}/>
         <Route path="/blog-details/:id" element={<DetailsPage />} />
         <Route
           path="/DetailsPage"
