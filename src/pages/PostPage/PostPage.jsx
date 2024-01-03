@@ -69,7 +69,7 @@ const PostPage = () => {
   
     const newPost = {
       title,
-      username: auth?.data?.others?.username, // Use optional chaining to handle potential undefined or null values
+      username: auth.data.username, // Use optional chaining to handle potential undefined or null values
       desc,
     };
   
