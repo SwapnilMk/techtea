@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import { CiImageOn } from "react-icons/ci";
-import Footer from "../../components/Footer/Footer";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { APIURL } from "../../utlis/api";
+import { useState } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
+import { CiImageOn } from 'react-icons/ci';
+import Footer from '../../components/Footer/Footer';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { APIURL } from '../../utlis/api';
 
 const PostPage = () => {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [title, setTitle] = useState('');
+  const [desc, setDesc] = useState('');
   const navigate = useNavigate();
-  const auth = JSON.parse(localStorage.getItem("auth"));
-  const [photo, setPhoto] = useState("");
+  const auth = JSON.parse(localStorage.getItem('auth'));
+  const [photo, setPhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   // handle and convert it into base64
@@ -66,90 +66,94 @@ const PostPage = () => {
 
   const formSubmit = async (e) => {
     e.preventDefault();
-  
+
     const newPost = {
       title,
       username: auth.data.username, // Use optional chaining to handle potential undefined or null values
-      desc,
+      desc
     };
-  
+
     if (photo) {
       newPost.photo = photo;
     }
-  
+
     setIsLoading(true);
-  
+
     try {
       const res = await axios.post(`${APIURL}/api/posts`, newPost);
       console.log(res);
-      navigate("/");
-      toast.success("Post Uploaded", {
+      navigate('/');
+      toast.success('Post Uploaded', {
         position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 3000,
+        autoClose: 3000
       });
     } catch (err) {
       console.log(err);
-      toast.error("Something went wrong", {
+      toast.error('Something went wrong', {
         position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 3000,
+        autoClose: 3000
       });
     }
-  
+
     setIsLoading(false);
   };
-  
 
   return (
     <>
       <Navbar />
-      <div className="container m-auto bg-gray-100 py-4 w-[50%] md:w-full mt-24">
-        <div className="mb-3">
-          <h2 className="text-2xl font-medium text-gray-800">
+      <div className='container m-auto mt-24 w-[50%] bg-gray-100 py-4 md:w-full'>
+        <div className='mb-3'>
+          <h2 className='text-2xl font-medium text-gray-800'>
             Create your post
           </h2>
         </div>
-        <form onSubmit={formSubmit} className="flex flex-col space-y-3">
-          <div className="img relative h-[350px] bg-white w-full flex items-center justify-center overflow-hidden">
+        <form onSubmit={formSubmit} className='flex flex-col space-y-3'>
+          <div className='img relative flex h-[350px] w-full items-center justify-center overflow-hidden bg-white'>
             {photo ? (
-              <img loading="lazy" className="h-full w-full object-cover" src={photo} alt="" />
+              <img
+                loading='lazy'
+                className='h-full w-full object-cover'
+                src={photo}
+                alt=''
+              />
             ) : (
-              <div className="flex flex-col items-center justify-center">
+              <div className='flex flex-col items-center justify-center'>
                 <p>Upload image</p>
                 <p>(Size should be less than 2MB)</p>
               </div>
             )}
             <input
-              type="file"
-              id="fileInput"
-              name="image"
-              style={{ display: "none" }}
+              type='file'
+              id='fileInput'
+              name='image'
+              style={{ display: 'none' }}
               onChange={handleImage}
-              className="bg-black w-10 h-10 text-white flex items-center justify-center"
+              className='flex h-10 w-10 items-center justify-center bg-black text-white'
             />
             <label
-              htmlFor="fileInput"
-              className="bg-black text-white p-1 cursor-pointer absolute bottom-0 left-0"
+              htmlFor='fileInput'
+              className='absolute bottom-0 left-0 cursor-pointer bg-black p-1 text-white'
             >
               <CiImageOn size={30} />
             </label>
           </div>
           <div>
-            <p className=" text-lg font-medium text-gray-800">Title</p>
+            <p className='text-lg font-medium text-gray-800'>Title</p>
             <input
-              placeholder="Post title..."
-              className="w-full p-2 bg-white"
-              type="text"
+              placeholder='Post title...'
+              className='w-full bg-white p-2'
+              type='text'
               onChange={(e) => setTitle(e.target.value)}
               required
             />
           </div>
           <div>
-            <p className=" text-lg font-medium text-gray-800">Details</p>
+            <p className='text-lg font-medium text-gray-800'>Details</p>
             <textarea
-              placeholder="Post details..."
-              className="w-full p-2 bg-white "
+              placeholder='Post details...'
+              className='w-full bg-white p-2'
               rows={3}
-              type="text"
+              type='text'
               onChange={(e) => setDesc(e.target.value)}
               required
             />
@@ -157,22 +161,22 @@ const PostPage = () => {
           {/* button */}
           {auth ? (
             <button
-              type="submit"
-              // className="bg-black w-full text-white p-2 font-medium"
+              type='submit'
+              // className="p-2 w-full font-medium text-white bg-black"
               className={`${
                 isLoading
-                  ? "bg-[rgba(0,0,0,0.5)] cursor-not-allowed"
-                  : "bg-gray-800 cursor-pointer"
-              } w-full text-white p-2 font-medium `}
+                  ? 'cursor-not-allowed bg-[rgba(0,0,0,0.5)]'
+                  : 'cursor-pointer bg-gray-800'
+              } w-full p-2 font-medium text-white`}
               disabled={isLoading} // Disable the button when loading is true
             >
-              {isLoading ? "Uploading..." : "Upload Post"}{" "}
+              {isLoading ? 'Uploading...' : 'Upload Post'}{' '}
               {/* Show loading indicator or button text */}
             </button>
           ) : (
             <Link
-              to="/login"
-              className="bg-black w-full text-center text-white p-2 font-medium"
+              to='/login'
+              className='w-full bg-black p-2 text-center font-medium text-white'
             >
               Please login
             </Link>

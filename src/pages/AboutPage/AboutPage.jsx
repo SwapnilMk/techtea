@@ -1,13 +1,13 @@
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
+import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 
 function AboutPage() {
   return (
     <>
       <Navbar />
-      <div className="container m-auto bg-gray-100 py-4 w-[50%] md:w-full mt-24">
-        <h2 className="text-3xl font-bold">About</h2>
-        <p className="mt-6">
+      <div className='container m-auto mt-24 w-[50%] bg-gray-100 py-4 md:w-full'>
+        <h2 className='text-3xl font-bold'>About</h2>
+        <p className='mt-6'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
           cupiditate eius molestiae unde aspernatur modi neque veritatis dolorum
           magnam quae necessitatibus optio temporibus, accusantium reiciendis

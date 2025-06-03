@@ -1,18 +1,20 @@
 // profileSlice.js
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const storedProfileDetails = localStorage.getItem("profileDetails");
-const initialState = storedProfileDetails ? JSON.parse(storedProfileDetails) : null;
+const storedProfileDetails = localStorage.getItem('profileDetails');
+const initialState = storedProfileDetails
+  ? JSON.parse(storedProfileDetails)
+  : null;
 
 const profileSlice = createSlice({
-  name: "profile",
+  name: 'profile',
   initialState,
   reducers: {
     setProfileDetails: (state, action) => {
       return action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { setProfileDetails } = profileSlice.actions;

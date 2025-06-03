@@ -1,2 +1,1 @@
-export const APIURL = 'https://techtea.cyclic.app'
-// export const APIURL = 'http://localhost:8080'
+export const APIURL = import.meta.env.VITE_API_URL;

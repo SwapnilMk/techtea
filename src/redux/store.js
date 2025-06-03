@@ -1,16 +1,17 @@
 // store.js
 
-import { configureStore } from "@reduxjs/toolkit";
-import profileReducer from "./slice/profileSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import profileReducer from './slice/profileSlice';
 
 const store = configureStore({
   reducer: {
-    profile: profileReducer  },
+    profile: profileReducer
+  }
 });
 
 store.subscribe(() => {
   const profileDetails = store.getState().profile;
-  localStorage.setItem("profileDetails", JSON.stringify(profileDetails));
+  localStorage.setItem('profileDetails', JSON.stringify(profileDetails));
 });
 
 export default store;
